@@ -10,7 +10,7 @@ For more informations see <http://www.bernhard-ehlers.de/projects/netem/index.ht
 
 ## Building the image
 
-The image is downloadable from the GitHub releases area.
+The image is downloadable from the releases area.
 
 If you want to build it yourself, you need a linux system and install
 packer (https://www.packer.io) and qemu.
