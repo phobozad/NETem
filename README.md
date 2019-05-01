@@ -25,3 +25,4 @@ This fork modifies the project to support PCEngines ALIX and APU boards.  This r
 
 Currently, there is an issue booting from internal SD Card on PCEngines APU boards & these must boot from a USB flashdrive.  ALIX boards boot OK from internal CompactFlash.
 
+The image is hard-coded to use 115200 baud on ttyS0.  Low baud rates (e.g. 9600) make the menu system very slow to draw and make it painful to use.
