@@ -17,7 +17,11 @@ packer (https://www.packer.io) and qemu.
 
 Then build the image with
 ```
-rm -rf output-qemu
 packer build NETem.json
 ```
+
+## PCEngines device fork
+This fork modifies the project to support PCEngines ALIX and APU boards.  This repo is a fork of Bernhard Ehlers work (https://git.bernhard-ehlers.de/ehlers/NETem) modified to boot & run on a physical system rather than a GNS3 VM.
+
+Currently, there is an issue booting from internal SD Card on PCEngines APU boards & these must boot from a USB flashdrive.  ALIX boards boot OK from internal CompactFlash.
 
