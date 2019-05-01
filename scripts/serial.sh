@@ -4,11 +4,8 @@ set -x
 
 # Boot configuration
 # Serial interface is secondary console, the vga console remains main console
-# To change that, exchange the two 'console=' boot parameter
-sudo sed -i -e '1 i serial 0 38400' -e '/label .*core/,/append / s/\(append .*\)/\1 console=ttyS0,38400 console=tty0/' /mnt/sda1/boot/extlinux/extlinux.conf
-
-# /etc/inittab
-sudo sed -i -e '/tty6/ a ttyS0::respawn:/sbin/getty 38400 ttyS0 xterm' /etc/inittab
+# To change that, set the 'console=' boot parameter
+sudo sed -i -e '1 i serial 0 115200' -e '/label .*core/,/append / s/\(append .*\)/\1 console=ttyS0,115200n8/' /mnt/sda1/boot/extlinux/extlinux.conf
 
 # /etc/securetty
 sudo sed -i -e 's/^# *ttyS0/ttyS0/' /etc/securetty

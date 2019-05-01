@@ -73,8 +73,7 @@ wget $http/NETem/netem-conf.py
 chmod +x netem-conf.py
 
 # autologin on serial console
-sudo sed -i -e '/^tty1:/ s/^.*/tty1::respawn:\/sbin\/getty 38400 tty1/' -e '/^ttyS0:/ s/^.*/ttyS0::askfirst:\/sbin\/getty -nl \/sbin\/autologin 38400 ttyS0 xterm/' /etc/inittab
-sudo sed -i -e 's/tty1/`\/usr\/bin\/tty`/' /sbin/autologin
+sudo sed -i -e '/^tty1:/ s/^.*/ttyS0::respawn:\/sbin\/getty -nl \/sbin\/autologin 115200 ttyS0 xterm/' /etc/inittab
 echo 'sbin/autologin' >> /opt/.filetool.lst
 
 # autostart netem-conf
@@ -99,9 +98,8 @@ cat /tmp/bootsync.head > /opt/bootsync.sh
 cat >> /opt/bootsync.sh <<'EOF'
 . /etc/init.d/tc-functions
 
-# default LANG=C.UTF-8
-[ ! -f /etc/sysconfig/language ] || [ "`cat /etc/sysconfig/language`" = "LANG=C" ] && \
-	echo "LANG=C.UTF-8" > /etc/sysconfig/language
+# Set default LANG=C.UTF-8
+echo "LANG=C.UTF-8" > /etc/sysconfig/language
 
 # Configure network interfaces only when boot parameter "nodhcp" is used
 if grep -q -w nodhcp /proc/cmdline; then
