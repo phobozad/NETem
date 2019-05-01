@@ -6,6 +6,8 @@ sudo sed -i -e '/^\/opt\/bootlocal/ i' /opt/bootsync.sh
 echo -e "\nusername 'gns3', password 'gns3'\nRun filetool.sh -b if you want to save your changes" >> /etc/issue
 echo 'etc/issue' >> /opt/.filetool.lst
 echo 'etc/shadow' >> /opt/.filetool.lst
+# Fix ugly output with putty default settings due to UTF8 
+echo 'export NCURSES_NO_UTF8_ACS=1' >> .ashrc
 
 # save changes
 rm -f .ash_history
